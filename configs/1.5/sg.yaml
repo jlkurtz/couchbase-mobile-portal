@@ -353,6 +353,10 @@ properties:
                 
               The default value is an in-memory bucket called **walrus** that is only used during development and prototyping.
             default: 'walrus:'
+          session_cookie_name:
+            type: string
+            description: Customize the session cookie name that is used for this database. (Sync Gateway 2.0 and later)
+            default: SyncGatewaySession
           sync:
             type: string
             description: Sync function, which defines which users can read, update, or delete which documents. The default is a default sync function. For more information, see the section Sync function API.
