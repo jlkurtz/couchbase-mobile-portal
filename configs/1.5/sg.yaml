@@ -356,7 +356,7 @@ properties:
           session_cookie_name:
             type: string
             description: |
-              Customize the session cookie name that is used for this database. This configuration property is primarly used for web applications interacting with multiple Sync Gateway **databases**. Browsers typically have two methods of determining which cookie to use for a given request: the `URL` path or cookie name. With this property, you can use different cookie names for each database specified in the configuration file. Let's consider the following configuration file:
+              Starting in Sync Gateway 2.0, it is possible to customize the session cookie name that is used for this database. This configuration property is primarly used for web applications interacting with multiple Sync Gateway **databases**. Browsers typically have two methods of determining which cookie to use for a given request: the `URL` path or cookie name. With this property, you can use different cookie names for each database specified in the configuration file. Let's consider the following configuration file:
               
               ```json
               {
@@ -385,7 +385,7 @@ properties:
               
               The cookie returned in the `Set-Cookie` header would then have the form "CustomName1=3cad4b95524179bf144fe0d92b8f09877bb86bf5;path=/db1/".
               
-              It could also be set in the browser with the custom cookie name:
+              It could also be set in code like so:
               
               ```javascript
               cookie1String = "CustomName1=3cad4b95524179bf144fe0d92b8f09877bb86bf5;path=/db1/";
