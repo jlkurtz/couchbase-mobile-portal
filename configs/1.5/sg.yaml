@@ -355,8 +355,43 @@ properties:
             default: 'walrus:'
           session_cookie_name:
             type: string
-            description: Customize the session cookie name that is used for this database. (Sync Gateway 2.0 and later)
-            default: SyncGatewaySession
+            description: |
+              Customize the session cookie name that is used for this database. This configuration property is primarly used for web applications interacting with multiple Sync Gateway **databases**. Browsers typically have two methods of determining which cookie to use for a given request: the `URL` path or cookie name. With this property, you can use different cookie names for each database specified in the configuration file. Let's consider the following configuration file:
+              
+              ```json
+              {
+                 "interface":":4984",
+                 "log":["*"],
+                 "databases": {
+                    "db1": {
+                      "session_cookie_name": "CustomName1",
+                      "server": "http://localhost:8091",
+                      "bucket": "bucket-1",
+                      "users": {
+                          "user_1": {"password":"1234"}
+                      },
+                      "db2": {
+                        "session_cookie_name": "CustomName2",
+                        "server": "http://localhost:8091",
+                        "bucket": "bucket-2",
+                        "users": {
+                            "adam_2": {"password":"5678"}
+                        }
+                      }
+                    }
+                 }
+              }
+              ```
+              
+              The cookie returned in the `Set-Cookie` header would then have the form "CustomName1=3cad4b95524179bf144fe0d92b8f09877bb86bf5;path=/db1/".
+              
+              It could also be set in the browser with the custom cookie name:
+              
+              ```javascript
+              cookie1String = "CustomName1=3cad4b95524179bf144fe0d92b8f09877bb86bf5;path=/db1/";
+              document.cookie = cookie1String;
+              ```
+            default: 'SyncGatewaySession'
           sync:
             type: string
             description: Sync function, which defines which users can read, update, or delete which documents. The default is a default sync function. For more information, see the section Sync function API.
