@@ -383,9 +383,9 @@ properties:
               }
               ```
               
-              The cookie returned in the `Set-Cookie` header would then have the form "CustomName1=3cad4b95524179bf144fe0d92b8f09877bb86bf5;path=/db1/".
+              With this configuration, the `Set-Cookie` response header of the POST `:4984/{db}/_session` endpoint (Public REST API) would then have the form "CustomName1=3cad4b95524179bf144fe0d92b8f09877bb86bf5;path=/db1/".
               
-              It could also be set in code like so:
+              When using POST `:4985/{db}/_session` (Admin REST API) to create a session, the cookie value is returned in the response body instead of the `Set-Cookie` header. In this case, it could also be set by the client, for web applications it would be the following in JavaScript:
               
               ```javascript
               cookie1String = "CustomName1=3cad4b95524179bf144fe0d92b8f09877bb86bf5;path=/db1/";
