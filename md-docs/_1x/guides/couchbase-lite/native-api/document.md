@@ -455,7 +455,7 @@ Expiration timing is not highly precise. The times are stored with one-second gr
 
 ## Document change notifications
 
-You can register for notifications when a particular document is updated or deleted. This is very useful if you're display a user interface element whose content is based on the document: use the notification to trigger a redisplay of the view.
+You can register for notifications when a particular document is updated or deleted. This is very useful if you're displaying a user interface element whose content is based on the document: use the notification to trigger a redisplay of the view.
 
 You can use change events for the following purposes:
 
